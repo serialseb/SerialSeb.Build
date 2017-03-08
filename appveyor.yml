@@ -1,0 +1,42 @@
+environment:
+  SSL_CERT_FILE: C:\ca\cacert.pem
+  GITHUB_TOKEN:
+    secure: LWCRPexJEGMkW0f8ku8Q45CPnQDCi4sgyi/cFdOHizI9ToLlDYozXxI21bD9cDU4
+
+assembly_info:
+  patch: false
+
+nuget:
+  project_feed: true
+  disable_publish_on_pr: true
+
+cache:
+  - vendor\ -> Gemfile.lock
+  - C:\ProgramData\chocolatey\bin -> appveyor.yml
+  - C:\ProgramData\chocolatey\lib -> appveyor.yml
+
+init:
+
+install:
+  - ps: ./SerialSeb.Build/Install.ps1
+
+before_build:
+  - ps: ./SerialSeb.Build/Before-Build.ps1
+
+build_script:
+  - ps: ./SerialSeb.Build/Build-Script.ps1
+
+after_build:
+  - ps: ./SerialSeb.Build/After-Build.ps1
+
+test_script:
+- ps: ./SerialSeb.Build/Test-Script.ps1
+
+deploy:
+ - provider: NuGet
+   api_key:
+     secure: KAawIkFXgAsCh3eqjDd2N/epoJ8fW12RMSZpEaaqPZvlwlEEGdxanyxCFXccnvMa
+   skip_symbols: true
+   artifact: /.*\.nupkg/
+   on:
+     appveyor_repo_tag: true
