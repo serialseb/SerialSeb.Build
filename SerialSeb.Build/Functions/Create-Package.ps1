@@ -15,6 +15,8 @@ if ($env:APPVEYOR_REPO_TAG -eq $true) {
 
 $authors =  (git shortlog -sn --all | ? { $_ -match '^\s*(?<count>\d+)\s*(?<author>.*)$' } | % {"$($matches["author"]) ($($matches["count"]))" }) -join ', '
 $description = $repoInfo.description
+if (-not $description) { $description = $repoInfo.name }
+
 $licenseUrl = "https://github.com/$($env:APPVEYOR_REPO_NAME)/tree/$env:APPVEYOR_REPO_COMMIT/LICENSE.md"
 $projectUrl = "https://github.com/$($env:APPVEYOR_REPO_NAME)/"
 $nuspecPath = $env:SSB_NUSPEC_PATH
