@@ -1,5 +1,5 @@
 $ErrorActionPreference = "Stop"
-
+nuget update -self
 echo "Installing SSL Cert file to $env:SSL_CERT_FILE"
 mkdir c:\ca
 iwr http://curl.haxx.se/ca/cacert.pem -outfile $env:SSL_CERT_FILE

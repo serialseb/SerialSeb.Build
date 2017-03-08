@@ -27,10 +27,16 @@ write-host "Authors: $authors"
 write-host "Project URL: $projectUrl"
 write-host "Description: $description"
 
-& nuget pack $nuspecPath `
+$nugetBasePath = "$((dir $nuspecPath).Directory)\"
+
+
+Write-Host "nuget pack `"$nuspecPath`" -version $env:NUGET_VERSION -basepath `"$nugetBasepath`""
+
+& nuget pack "$nuspecPath" `
     -version $env:NUGET_VERSION `
-    -basepath "$((dir $nuspecPath).Directory)/" `
+    -basepath "$nugetBasepath" `
     -Properties releaseNotes="$releaseNotes"`;authors="$authors"`;licenseUrl="$licenseUrl"`;projectUrl="$projectUrl"`;description="$description"
+
 if ($LastExitCode -ne 0) { $host.SetShouldExit($LastExitCode)  }
 
 Push-AppveyorArtifact *.nupkg
