@@ -27,5 +27,6 @@ write-host "Project URL: $projectUrl"
 & nuget pack $nuspecPath `
     -version $env:NUGET_VERSION `
     -Properties releaseNotes="$releaseNotes"`;authors="$authors"`;licenseUrl="$licenseUrl"`;projectUrl="$projectUrl"`;description="$description"
+if ($LastExitCode -ne 0) { $host.SetShouldExit($LastExitCode)  }
 
 Push-AppveyorArtifact *.nupkg

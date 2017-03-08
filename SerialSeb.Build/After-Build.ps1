@@ -1,3 +1,5 @@
+$ErrorActionPreference = "Stop"
+
 if ($env:SONARQUBE_TOKEN) {
     & $env:SSB_FUNCS/Publish-Coverity.ps1
 }

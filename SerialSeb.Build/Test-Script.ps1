@@ -1,3 +1,5 @@
+$ErrorActionPreference = "Stop"
+
 if ($env:SSB_TEST_ASSEMBLY) {
     & $env:SSB_FUNCS/Test-Code.ps1
 }

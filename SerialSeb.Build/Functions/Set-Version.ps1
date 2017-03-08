@@ -35,5 +35,3 @@ Write-Host "Version '$version', base '$baseVersion', prefix '$env:SSB_VERSION_PR
 
 Set-AppveyorBuildVariable -Name "AssemblyMajor" -Value "$major"
 Update-AppVeyorBuild -Version "$version"
-
-ruby bin/chandler push

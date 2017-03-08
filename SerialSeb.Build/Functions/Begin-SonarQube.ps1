@@ -12,3 +12,4 @@ MSBuild.SonarQube.Runner.exe begin `
     /d:sonar.cs.xunit.reportsPaths=="XUnitResults.xml" `
     /d:"sonar.host.url=https://sonarqube.com" `
     /d:"sonar.login=$env:SONARQUBE_TOKEN" $branchParam
+if ($LastExitCode -ne 0) { $host.SetShouldExit($LastExitCode)  }
