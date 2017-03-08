@@ -15,7 +15,8 @@ $env:SSB_FUNCS = Join-Path (Split-Path -Path $MyInvocation.MyCommand.Definition 
 
 & $env:SSB_FUNCS/Set-Version.ps1
 
-if ((test-path CHANGELOG.md) -and ((git tag | measure-object).Count -gt 0) {
+$tagCount = (git tag | measure-object).Count
+if ((test-path CHANGELOG.md) -and $tagCount -gt 0) {
     & $env:SSB_FUNCS/Install-Chandler.ps1
     & $env:SSB_FUNCS/Push-Chandler.ps1
 }
