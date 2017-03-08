@@ -21,6 +21,8 @@ $licenseUrl = "https://github.com/$($env:APPVEYOR_REPO_NAME)/tree/$env:APPVEYOR_
 $projectUrl = "https://github.com/$($env:APPVEYOR_REPO_NAME)/"
 $nuspecPath = $env:SSB_NUSPEC_PATH
 
+if (-not (test-path $nuspecPath)) { return }
+
 write-host "Release notes: $releaseNotes"
 write-host "License URL: $licenseUrl"
 write-host "Authors: $authors"
