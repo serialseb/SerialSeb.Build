@@ -29,7 +29,7 @@ write-host "Description: $description"
 
 & nuget pack $nuspecPath `
     -version $env:NUGET_VERSION `
-    -basePath . `
+    -basepath "$((dir $nuspecPath).Directory)" `
     -Properties releaseNotes="$releaseNotes"`;authors="$authors"`;licenseUrl="$licenseUrl"`;projectUrl="$projectUrl"`;description="$description"
 if ($LastExitCode -ne 0) { $host.SetShouldExit($LastExitCode)  }
 
