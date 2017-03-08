@@ -23,9 +23,11 @@ write-host "Release notes: $releaseNotes"
 write-host "License URL: $licenseUrl"
 write-host "Authors: $authors"
 write-host "Project URL: $projectUrl"
+write-host "Description: $description"
 
 & nuget pack $nuspecPath `
     -version $env:NUGET_VERSION `
+    -basePath . `
     -Properties releaseNotes="$releaseNotes"`;authors="$authors"`;licenseUrl="$licenseUrl"`;projectUrl="$projectUrl"`;description="$description"
 if ($LastExitCode -ne 0) { $host.SetShouldExit($LastExitCode)  }
 
