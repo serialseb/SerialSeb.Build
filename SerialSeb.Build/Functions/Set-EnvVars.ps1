@@ -16,7 +16,7 @@ if ($nuspecFiles) {
     $env:SSB_NUSPEC_PATHS = ($nuspecFiles -join ";")
     Add-AppVeyorMessage `
         -Category Info `
-        -Message "Nuget: Found $($nuspecFiles.Count)"
+        -Message "Nuget: Found $($nuspecFiles.Count)" `
         -Details $env:SSB_NUSPEC_PATHS
 } else {
     Add-AppVeyorMessage `
