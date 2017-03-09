@@ -21,7 +21,7 @@ $licenseUrl = "https://github.com/$($env:APPVEYOR_REPO_NAME)/tree/$env:APPVEYOR_
 $projectUrl = "https://github.com/$($env:APPVEYOR_REPO_NAME)/"
 $nuspecPath = $env:SSB_NUSPEC_PATH
 
-if (-not (test-path $nuspecPath)) { return }
+if (-not (test-path $nuspecPath)) { exit }
 
 write-host "Release notes: $releaseNotes"
 write-host "License URL: $licenseUrl"
@@ -29,16 +29,21 @@ write-host "Authors: $authors"
 write-host "Project URL: $projectUrl"
 write-host "Description: $description"
 
-$nugetBasePath = "$((dir $nuspecPath).Directory)\"
+$nuspecs = $env:SSB_NUSPEC_PATHS -split ";"
+
+$nuspecs | ForEach-Object {
+    $nuspecPath = $_
+    $nuspecBasePath = "$((get-childitem $_).Directory)\"
 
 
-Write-Host "nuget pack `"$nuspecPath`" -version $env:NUGET_VERSION -basepath `"$nugetBasepath`""
+    Write-Host "nuget pack `"$nuspecPath`" -version $env:NUGET_VERSION -basepath `"$nuspecBasePath`""
 
-& nuget pack "$nuspecPath" `
-    -version $env:NUGET_VERSION `
-    -basepath "$nugetBasepath" `
-    -Properties releaseNotes="$releaseNotes"`;authors="$authors"`;licenseUrl="$licenseUrl"`;projectUrl="$projectUrl"`;description="$description"
-
-if ($LastExitCode -ne 0) { $host.SetShouldExit($LastExitCode)  }
+    & nuget pack "$nuspecPath" `
+        -version $env:NUGET_VERSION `
+        -basepath "$nugetBasepath" `
+        -NonInteractive `
+        -Properties releaseNotes="$releaseNotes"`;authors="$authors"`;licenseUrl="$licenseUrl"`;projectUrl="$projectUrl"`;description="$description"
+    if ($LastExitCode -ne 0) { $host.SetShouldExit($LastExitCode)  }
+}
 
 Push-AppveyorArtifact *.nupkg

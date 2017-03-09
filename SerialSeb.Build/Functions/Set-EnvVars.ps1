@@ -11,6 +11,7 @@ if (test-path "$env:APPVEYOR_BUILD_FOLDER/src/") {
 
 $env:SSB_PROJECT_NAME = $env:APPVEYOR_PROJECT_NAME
 
-if (test-path "$env:APPVEYOR_BUILD_FOLDER/*.nuspec") {
-    $env:SSB_NUSPEC_PATH = (Get-ChildItem "$env:APPVEYOR_BUILD_FOLDER/*.nuspec").ToString()
+$nuspecFiles = Get-ChildItem "*.nuspec" -recurse
+if ($nuspecFiles) {
+    $env:SSB_NUSPEC_PATHS = ((Get-ChildItem "*.nuspec" -recurse) -join ";")
 }

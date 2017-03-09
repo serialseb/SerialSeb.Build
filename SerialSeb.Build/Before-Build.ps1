@@ -1,7 +1,7 @@
 $ErrorActionPreference = "Stop"
 
 if ($env:SSB_SOLUTION_FILE) {
-    nuget restore $env:SSB_SOLUTION_FILE
+    nuget restore -NonInteractive $env:SSB_SOLUTION_FILE
     if ($LastExitCode -ne 0) { $host.SetShouldExit($LastExitCode)  }
 }
 
