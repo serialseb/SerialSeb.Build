@@ -6,6 +6,11 @@ here's a changelog for my build files!
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.0.2]
+### Added
+ - Supports multiple nugets
+ - Better AppVeyor messaging
+
 ## [1.0.1]
 ### Fixed
  - Only build package if nuspec is present
