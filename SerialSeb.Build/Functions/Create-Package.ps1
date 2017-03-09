@@ -36,7 +36,7 @@ $nuspecs | ForEach-Object {
         $noPackageAnalysis = "-NoPackageAnalysis"
     }
     & nuget pack "$nuspecPath" `
-        -version $env:NUGET_VERSION `
+        -version $env:SSB_VERSION_NUGET `
         -basepath "$nuspecBasepath" `
         -NonInteractive $noPackageAnalysis `
         -Properties releaseNotes="$releaseNotes"`;authors="$authors"`;licenseUrl="$licenseUrl"`;projectUrl="$projectUrl"`;description="$description"

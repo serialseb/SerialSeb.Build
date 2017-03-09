@@ -31,7 +31,7 @@ else {
 }
 $env:SSB_VERSION_BASE = $baseVersion
 $env:SSB_VERSION_PREFIX = $buildVersionPrefix
-$env:NUGET_VERSION = $nugetVersion
+$env:SSB_VERSION_NUGET = $nugetVersion
 
 Set-AppveyorBuildVariable -Name "AssemblyMajor" -Value "$major"
 Update-AppVeyorBuild -Version "$version"
