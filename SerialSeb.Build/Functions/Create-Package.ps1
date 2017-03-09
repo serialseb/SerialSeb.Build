@@ -13,7 +13,7 @@ if ($env:APPVEYOR_REPO_TAG -eq $true) {
     $releaseNotes = (Get-GitHubRepo "releases/tags/$($env:APPVEYOR_REPO_TAG_NAME)").body.Replace('"','\"').Replace('### ', '')
 }
 
-$authors =  (git shortlog -sn --all | ? { $_ -match '^\s*(?<count>\d+)\s*(?<author>.*)$' } | % {"$($matches["author"]) ($($matches["count"]))" }) -join ', '
+$authors =  (git shortlog -sn --all | Where-Object { $_ -match '^\s*(?<count>\d+)\s*(?<author>.*)$' } | ForEach-Object {"$($matches["author"]) ($($matches["count"]))" }) -join ', '
 $description = $repoInfo.description
 if (-not $description) { $description = $repoInfo.name }
 

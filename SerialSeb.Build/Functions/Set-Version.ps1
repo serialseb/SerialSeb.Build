@@ -24,7 +24,7 @@ else {
     $version = "$buildVersionPrefix+$build"
 
     
-    $nugetBuild = "-$($build | % PadLeft 4 '0')"
+    $nugetBuild = "-$($build | ForEach-Object PadLeft 4 '0')"
     $nugetSuffix = $buildVersionSuffix.Substring(0,[math]::min(15, $buildVersionSuffix.Length))
     
     $nugetVersion = "$baseVersion-$nugetSuffix$nugetBuild"
