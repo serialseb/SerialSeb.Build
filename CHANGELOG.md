@@ -10,7 +10,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
  - Supports multiple nugets
  - Better AppVeyor messaging
-
+ - disable package analysis with NUGET_NO_PACKAGE_ANALYSIS
+ 
 ## [1.0.1]
 ### Fixed
  - Only build package if nuspec is present

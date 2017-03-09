@@ -31,11 +31,14 @@ $nuspecs = ($env:SSB_NUSPEC_PATHS -split ";")
 $nuspecs | ForEach-Object {
     $nuspecPath = $_
     $nuspecBasePath = "$((get-childitem $nuspecPath).Directory)\"
-
+    $noPackageAnalysis = ""
+    if ($env:NUGET_NO_PACKAGE_ANALYSIS) {
+        $noPackageAnalysis = "-NoPackageAnalysis"
+    }
     & nuget pack "$nuspecPath" `
         -version $env:NUGET_VERSION `
         -basepath "$nuspecBasepath" `
-        -NonInteractive `
+        -NonInteractive $noPackageAnalysis `
         -Properties releaseNotes="$releaseNotes"`;authors="$authors"`;licenseUrl="$licenseUrl"`;projectUrl="$projectUrl"`;description="$description"
     if ($LastExitCode -ne 0) { $host.SetShouldExit($LastExitCode)  }
 }

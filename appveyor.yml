@@ -1,5 +1,6 @@
 environment:
   SSL_CERT_FILE: C:\ca\cacert.pem
+  NUGET_NO_PACKAGE_ANALYSIS: true
   GITHUB_TOKEN:
     secure: LWCRPexJEGMkW0f8ku8Q45CPnQDCi4sgyi/cFdOHizI9ToLlDYozXxI21bD9cDU4
 
