@@ -14,7 +14,10 @@ and just put the damn source files in the src folder.
 The SerialSeb Build system supports the following features:
 
  - SemVer 2 (and NuGet "reduced experience") based on a VERSION file and tags
- - NuGet packaging based on GitHub repository information
+ - NuGet packaging based on GitHub repository information including:
+    - Project description
+    - List of contributors
+    - hard-coded license so you only point to the one at the time of build
  - Source-only packages for both old and new NuGet content
  - Automatically run tests and send coverage reports to SonarQube, Coverity and
    coveralls.io
@@ -56,4 +59,12 @@ environment:
   GITHUB_TOKEN: your github token
   coverity_token: your coverity token
   coverity_email: the coverity email to send notifications to
+  nuget_no_package_analysis: prevent package analysis after the build
 ```
+
+## TODO
+
+ - [ ] Version uses major.minor as baseline for version, calculates on tag
+ - [ ] Calculates build id from distance to last tag
+ - [ ] Add nuget to github release
+ - [ ] Add AppVeyor build info to release and nuget info
