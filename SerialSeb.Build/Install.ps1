@@ -24,12 +24,14 @@ if ($env:SONARQUBE_TOKEN) {
 & $env:SSB_FUNCS/Set-EnvVars.ps1
 if ($env:SSB_SOLUTION_FILE) {
     Add-AppVeyorMessage "Project – Solution file $env:SSB_SOLUTION_FILE"
-} else {
+}
+else {
     Add-AppVeyorMessage "Project – No solution file found (no /src/ folder)"
 }
 if ($env:SSB_NUSPEC_PATHS) {
-    Add-AppVeyorMessage "NuGet – Found .nuspec files" -Details $env:SSB_NUSPEC_PATHS
-} else {
+    Add-AppVeyorMessage "NuGet – Found .nuspec files" -Details "$env:SSB_NUSPEC_PATHS"
+}
+else {
     Add-AppVeyorMessage `
         -Category Info `
         -Message "NuGet – No .nuspec found"
@@ -50,6 +52,7 @@ if ((test-path CHANGELOG.md) -and $tagCount -gt 0) {
     & $env:SSB_FUNCS/Install-Chandler.ps1
     & $env:SSB_FUNCS/Push-Chandler.ps1
     Add-AppVeyorMessage "Versioning – Changelog uploaded"
-} else {
-    Add-AppVeyorMessage "Versioning – Changelog ignored, No changelog or no tags"    
+}
+else {
+    Add-AppVeyorMessage "Versioning – Changelog ignored, No changelog or no tags"
 }

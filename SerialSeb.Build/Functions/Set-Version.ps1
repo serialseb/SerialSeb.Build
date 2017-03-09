@@ -8,7 +8,8 @@ if ($env:APPVEYOR_REPO_TAG -eq $true) {
     $version = $env:APPVEYOR_REPO_TAG_NAME
     $buildVersionPrefix = $version
     $nugetVersion = $version
-} else {
+}
+else {
     # $buildsForBranch = "/api/projects/$env:APPVEYOR_ACCOUNT_NAME/$env:APPVEYOR_PROJECT_SLUG/history?recordsNumber=4000&branch=$branch"
     # $lastBuild = (Invoke-WebRequest -Uri $buildsForBranch) | ConvertFrom-Json
     # $lastBuildVersion = $lastBuild.build.version

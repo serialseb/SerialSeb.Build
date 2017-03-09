@@ -11,5 +11,4 @@ if ($env:SSB_NUSPEC_PATHS) {
 
 if (test-path "src\Tests\bin\$env:CONFIGURATION\Tests.dll") {
     $env:SSB_TEST_ASSEMBLY = "src\Tests\bin\$env:CONFIGURATION\Tests.dll"
-    
 }

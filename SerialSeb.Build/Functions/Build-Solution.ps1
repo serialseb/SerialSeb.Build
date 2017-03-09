@@ -13,7 +13,8 @@ $buildArgs = @(
 if ($env:APPVEYOR_REPO_TAG -eq $false) {
   & $buildCmd $buildArgs
   return
-} else {
+}
+else {
   "Building project with Coverity Scan..."
   cov-build --dir cov-int $buildCmd $buildArgs
 }
