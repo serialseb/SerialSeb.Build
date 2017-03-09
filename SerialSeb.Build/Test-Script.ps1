@@ -6,6 +6,9 @@ if ($env:SSB_TEST_ASSEMBLY) {
 } else {
     Add-AppVeyorMessage "Tests – No test assembly detected"
 }
+if ($env:COVERALLS_TOKEN) {
+    Add-AppVeyorMessage "Reporting – Coveralls report uploaded."    
+}
 if ($env:SONARQUBE_TOKEN) {
     & $env:SSB_FUNCS/End-SonarQube.ps1
     Add-AppVeyorMessage "Reporting – SonarQube report uploaded."
