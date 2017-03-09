@@ -11,7 +11,8 @@ if (test-path "$env:APPVEYOR_BUILD_FOLDER/src/") {
 
 $env:SSB_PROJECT_NAME = $env:APPVEYOR_PROJECT_NAME
 
-$nuspecFiles = Get-ChildItem "*.nuspec" -recurse
+$nuspecFiles = Get-ChildItem *.nuspec -recurse
 if ($nuspecFiles) {
-    $env:SSB_NUSPEC_PATHS = ((Get-ChildItem "*.nuspec" -recurse) -join ";")
+    $env:SSB_NUSPEC_PATHS = ($nuspecFiles -join ";")
+    Write-Host "Nuget Specifications found: $env:SSB_NUSPEC_PATHS"
 }
