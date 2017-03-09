@@ -18,9 +18,10 @@ The SerialSeb Build system supports the following features:
     - Project description
     - List of contributors
     - hard-coded license so you only point to the one at the time of build
- - Source-only packages for both old and new NuGet content
+ - Source-only packages as the default for nuget packages 'casue source is cool
  - Automatically run tests and send coverage reports to SonarQube, Coverity and
    coveralls.io
+ - Autopublish to nuget on tag
  - Keep CHANGELOG.md sync'd up with releaes in GitHub
 
 ## How do I use them
