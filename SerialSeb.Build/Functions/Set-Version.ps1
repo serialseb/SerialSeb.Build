@@ -31,7 +31,6 @@ if ($env:APPVEYOR_REPO_TAG -eq $true) {
 $env:SSB_VERSION_BASE = $baseVersion
 $env:SSB_VERSION_PREFIX = $buildVersionPrefix
 $env:NUGET_VERSION = $nugetVersion
-Write-Host "Version '$version', base '$baseVersion', prefix '$env:SSB_VERSION_PREFIX', nuget '$nugetVersion'"
 
 Set-AppveyorBuildVariable -Name "AssemblyMajor" -Value "$major"
 Update-AppVeyorBuild -Version "$version"

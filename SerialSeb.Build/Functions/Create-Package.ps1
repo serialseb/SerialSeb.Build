@@ -32,9 +32,6 @@ $nuspecs | ForEach-Object {
     $nuspecPath = $_
     $nuspecBasePath = "$((get-childitem $nuspecPath).Directory)\"
 
-
-    Write-Host "nuget pack `"$nuspecPath`" -version $env:NUGET_VERSION -basepath `"$nuspecBasePath`""
-
     & nuget pack "$nuspecPath" `
         -version $env:NUGET_VERSION `
         -basepath "$nuspecBasepath" `
