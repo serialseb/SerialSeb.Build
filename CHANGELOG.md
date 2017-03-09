@@ -6,6 +6,11 @@ here's a changelog for my build files!
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.1.1]
+### Added
+ - Added icon
+
+### Added
 ## [1.1.0]
 ### Added
  - You never know where you'll find a friend, so instead of being stuck looking
