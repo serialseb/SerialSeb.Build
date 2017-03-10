@@ -36,8 +36,8 @@ else {
 }
 
 $ $env:SSB_FUNCS/Install-Tools.ps1
-Add-AppVeyorMessage "Install - Tools installed from nuget" -Details `
-@"$env:SSB_XUNIT_PATH
+Add-AppVeyorMessage "Install - Tools installed from nuget" -Details @"
+$env:SSB_XUNIT_PATH
 $env:SSB_OPENCOVER_PATH
 $env:SSB_COVERALLS_PATH"@
 

@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
  - I care about the environment deeply. So much so that I got quite upset when
    I realised I gave the environment incorrect variables for versions, the poor
    thing. That's been fixed and now they display correctly in AppVeyor messages
+ - Tools a craftman make, and if you didn't reference them yourself, the build
+   would fail. No longer!
 
 ## [1.1.2]
 ### Fixed
