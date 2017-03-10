@@ -1,6 +1,6 @@
-$xunit = (Resolve-Path "src/packages/xunit.runner.console.*/tools/xunit.console.exe").ToString()
-$opencover = (Resolve-Path "src/packages/OpenCover.*/tools/OpenCover.Console.exe").ToString()
-$coveralls = (Resolve-Path "src/packages/coveralls.net.*/tools/csmacnz.Coveralls.exe").ToString()
+$xunit = (Resolve-Path "src/packages/xunit.runner.console/tools/xunit.console.exe").ToString()
+$opencover = (Resolve-Path "src/packages/OpenCover/tools/OpenCover.Console.exe").ToString()
+$coveralls = (Resolve-Path "src/packages/coveralls.net/tools/csmacnz.Coveralls.exe").ToString()
 
 & $opencover -register:user -target:$xunit  -returntargetcode "-targetargs:""src\Tests\bin\$env:CONFIGURATION\Tests.dll"" -noshadow -appveyor -xml XUnitResults.xml" -filter:"+[*]* -[*]Json.*" -output:opencoverCoverage.xml -searchdirs:"src\$env:SSB_PROJECT_NAME\bin\$env:CONFIGURATION\"
 if ($LastExitCode -ne 0) { $host.SetShouldExit($LastExitCode)  }

@@ -6,8 +6,14 @@ here's a changelog for my build files!
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [Unreleased]
+### Fixed
+ - I care about the environment deeply. So much so that I got quite upset when
+   I realised I gave the environment incorrect variables for versions, the poor
+   thing. That's been fixed and now they display correctly in AppVeyor messages
+
 ## [1.1.2]
-### Added
+### Fixed
  - Fixed project URLs as tokens
   
 ## [1.1.1]
