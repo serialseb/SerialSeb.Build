@@ -35,7 +35,8 @@ else {
     Add-AppVeyorMessage "NuGet - No .nuspec found"
 }
 
-$ $env:SSB_FUNCS/Install-Tools.ps1
+& $env:SSB_FUNCS/Install-Tools.ps1
+
 Add-AppVeyorMessage "Install - Tools installed from nuget" -Details @"
 $env:SSB_XUNIT_PATH
 $env:SSB_OPENCOVER_PATH
