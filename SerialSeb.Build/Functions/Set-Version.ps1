@@ -32,6 +32,7 @@ else {
 $env:SSB_VERSION_BASE = $baseVersion
 $env:SSB_VERSION_PREFIX = $buildVersionPrefix
 $env:SSB_VERSION_NUGET = $nugetVersion
+$env:SSB_VERSION_SEMVER2 = $version
 
 Set-AppveyorBuildVariable -Name "AssemblyMajor" -Value "$major"
-Update-AppVeyorBuild -Version "$version"
+Update-AppVeyorBuild -Version $env:SSB_VERSION_SEMVER2

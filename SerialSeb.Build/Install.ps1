@@ -32,9 +32,7 @@ if ($env:SSB_NUSPEC_PATHS) {
     Add-AppVeyorMessage "NuGet - Found .nuspec files" -Details "$env:SSB_NUSPEC_PATHS"
 }
 else {
-    Add-AppVeyorMessage `
-        -Category Info `
-        -Message "NuGet - No .nuspec found"
+    Add-AppVeyorMessage "NuGet - No .nuspec found"
 }
 
 
@@ -42,7 +40,7 @@ else {
 
 
 & $env:SSB_FUNCS/Set-Version.ps1
-Add-AppVeyorMessage "Versioning - version '$version', base '$baseVersion', prefix '$env:SSB_VERSION_PREFIX', nuget '$nugetVersion'"
+Add-AppVeyorMessage "Versioning - semver '$env:SSB_VERSION_SEMVER2', base '$env:SSB_VERSION_BASE', prefix '$env:SSB_VERSION_PREFIX', nuget '$env:SSB_VERSION_NUGET'"
 
 
 
