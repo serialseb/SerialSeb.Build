@@ -33,7 +33,7 @@ $nuspecs | ForEach-Object {
     $nuspecFile = get-childitem $nuspecPath
     $nuspecBasePath = "$($nuspecFile.Directory)\"
     $nuPkgPath = $_.ToString().Replace(".nuspec", ".$($env:SSB_VERSION_NUGET).nupkg")
-    $nuPkgDeployName = ($nuspecFile | resolve-path -relative).ToString().Replace("/", "-").Replace("\", "-")
+    $nuPkgDeployName = ($nuspecBasePath | resolve-path -relative).ToString().Replace("/", "-").Replace("\", "-")
     $noPackageAnalysis = ""
     if ($env:NUGET_NO_PACKAGE_ANALYSIS) {
         $noPackageAnalysis = "-NoPackageAnalysis"
