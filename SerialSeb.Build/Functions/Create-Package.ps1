@@ -36,11 +36,13 @@ $nuspecs | ForEach-Object {
         $noPackageAnalysis = "-NoPackageAnalysis"
     }
     & nuget pack "$nuspecPath" `
-        -version $env:SSB_VERSION_NUGET `
-        -basepath "$nuspecBasepath" `
+        -Version $env:SSB_VERSION_NUGET `
+        -BasePath "$nuspecBasepath" `
+        -OutputPath "$nuspecBasePath" `
         -NonInteractive $noPackageAnalysis `
         -Properties releaseNotes="$releaseNotes"`;authors="$authors"`;licenseUrl="$licenseUrl"`;projectUrl="$projectUrl"`;description="$description"
     if ($LastExitCode -ne 0) { $host.SetShouldExit($LastExitCode)  }
+
 }
 
 Push-AppveyorArtifact *.nupkg
