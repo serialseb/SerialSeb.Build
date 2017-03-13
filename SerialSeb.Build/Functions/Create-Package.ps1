@@ -45,5 +45,5 @@ $nuspecs | ForEach-Object {
         -NonInteractive $noPackageAnalysis `
         -Properties releaseNotes="$releaseNotes"`;authors="$authors"`;licenseUrl="$licenseUrl"`;projectUrl="$projectUrl"`;description="$description"
     if ($LastExitCode -ne 0) { $host.SetShouldExit($LastExitCode)  }
-    Push-AppveyorArtifact $nuPkgPath -DeploymentName $nuPkgDeployname
+    Push-AppveyorArtifact "$($nuspecBasePath)*.$($env:SSB_VERSION_NUGET).nupkg" -DeploymentName $nuPkgDeployname
 }
